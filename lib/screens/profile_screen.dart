@@ -27,9 +27,11 @@ class ProfileScreen extends StatelessWidget {
                 CircleAvatar(
                   radius: 40,
                   backgroundImage:
-                      user != null && user.image.startsWith('assets/')
-                      ? AssetImage(user.image) as ImageProvider
-                      : FileImage(File(user?.image ?? '')),
+                      (user?.image != null && user!.image.isNotEmpty)
+                      ? (user.image.startsWith('assets/')
+                            ? AssetImage(user.image)
+                            : FileImage(File(user.image)))
+                      : const AssetImage('assets/user.jpg') as ImageProvider,
                 ),
                 const SizedBox(height: 16),
                 Text('Name: ${user?.fullName ?? ''}'),
