@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: FutureBuilder<User?>(
           future: Storage.getUser(),
           builder: (context, AsyncSnapshot<User?> snapshot) {
-            return Text('Welcome, ${snapshot.data?.fullName ?? 'User'}');
+            return Text('Welcome, ${snapshot.data?.fullName ?? 'User'}👋');
           },
         ),
         actions: [
