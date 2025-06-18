@@ -30,55 +30,71 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Cart')),
-      body: ListView.builder(
-        itemCount: cart.length,
-        itemBuilder: (context, index) {
-          final item = cart[index];
-          return ListTile(
-            leading: Image.asset(item.product.image, width: 50),
-            title: Text(item.product.name),
-            subtitle: Text(
-              'Price: \$${item.product.price} | Qty: ${item.quantity}',
+      appBar: AppBar(title: const Text('Cart')),
+      body: cart.isEmpty
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Your cart is empty.'),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/home');
+                    },
+                    child: const Text('Go to Home'),
+                  ),
+                ],
+              ),
+            )
+          : ListView.builder(
+              itemCount: cart.length,
+              itemBuilder: (context, index) {
+                final item = cart[index];
+                return ListTile(
+                  leading: Image.asset(item.product.image, width: 50),
+                  title: Text(item.product.name),
+                  subtitle: Text(
+                    'Price: \$${item.product.price} | Qty: ${item.quantity}',
+                  ),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.remove),
+                        onPressed: () async {
+                          setState(() {
+                            if (item.quantity > 1) {
+                              item.quantity--;
+                            } else {
+                              cart.removeAt(index);
+                            }
+                          });
+                          await Storage.saveCart(cart);
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () async {
+                          setState(() => cart.removeAt(index));
+                          await Storage.saveCart(cart);
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  icon: Icon(Icons.remove),
-                  onPressed: () async {
-                    setState(() {
-                      if (item.quantity > 1) {
-                        item.quantity--;
-                      } else {
-                        cart.removeAt(index);
-                      }
-                    });
-                    await Storage.saveCart(cart);
-                  },
-                ),
-                IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () async {
-                    setState(() => cart.removeAt(index));
-                    await Storage.saveCart(cart);
-                  },
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Total: \$${totalPrice.toStringAsFixed(2)}'),
-            ElevatedButton(
-              onPressed: cart.isEmpty
-                  ? null
-                  : () async {
+      bottomNavigationBar: cart.isEmpty
+          ? null
+          : Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Total: \$${totalPrice.toStringAsFixed(2)}'),
+                  ElevatedButton(
+                    onPressed: () async {
                       final orders = await Storage.getOrders();
                       orders.add(
                         Order(
@@ -92,11 +108,11 @@ class _CartScreenState extends State<CartScreen> {
                       setState(() => cart = []);
                       Navigator.pushNamed(context, '/orders');
                     },
-              child: Text('Place Order'),
+                    child: const Text('Place Order'),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }
