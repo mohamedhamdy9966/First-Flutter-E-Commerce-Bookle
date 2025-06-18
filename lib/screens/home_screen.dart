@@ -14,6 +14,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final PageController _controller = PageController();
+  final List<String> carouselImages = [
+    'assets/images/ghali.png',
+    'assets/images/ghali2.png',
+    'assets/images/ghali3.png',
+  ];
 
   static const List<Product> products = [
     Product(
@@ -198,16 +203,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 180,
                   child: PageView(
                     controller: _controller,
-                    children: products
-                        .take(3)
-                        .map((p) => Image.asset(p.image, fit: BoxFit.cover))
+                    children: carouselImages
+                        .map((img) => Image.asset(img, fit: BoxFit.cover))
                         .toList(),
                   ),
                 ),
                 const SizedBox(height: 8),
                 SmoothPageIndicator(
                   controller: _controller,
-                  count: 3,
+                  count: carouselImages.length,
                   effect: WormEffect(
                     dotHeight: 8,
                     dotWidth: 8,
