@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Product(
       id: '3',
       name: 'Help',
-      category: 'Politics',
+      category: 'Philosophy',
       image: 'assets/images/help.jpg',
       description: 'Help',
       price: 99.99,
