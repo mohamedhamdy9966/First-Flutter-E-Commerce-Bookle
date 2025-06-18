@@ -21,7 +21,8 @@ class ECommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bookle App',
+      debugShowCheckedModeBanner: false,
+      title: 'Ghali BookStore',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,

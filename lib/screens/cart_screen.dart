@@ -19,13 +19,18 @@ class _CartScreenState extends State<CartScreen> {
     _loadCart();
   }
 
-  void _loadCart() async {
+  Future<void> _loadCart() async {
     final loadedCart = await Storage.getCart();
     setState(() => cart = loadedCart);
   }
 
   double get totalPrice =>
       cart.fold(0, (sum, item) => sum + item.product.price * item.quantity);
+
+  Future<void> _updateCart() async {
+    await Storage.saveCart(cart);
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +60,7 @@ class _CartScreenState extends State<CartScreen> {
                   leading: Image.asset(item.product.image, width: 50),
                   title: Text(item.product.name),
                   subtitle: Text(
-                    'Price: \$${item.product.price} | Qty: ${item.quantity}',
+                    'Price: \$${item.product.price.toStringAsFixed(2)}',
                   ),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -63,21 +68,27 @@ class _CartScreenState extends State<CartScreen> {
                       IconButton(
                         icon: const Icon(Icons.remove),
                         onPressed: () async {
-                          setState(() {
-                            if (item.quantity > 1) {
-                              item.quantity--;
-                            } else {
-                              cart.removeAt(index);
-                            }
-                          });
-                          await Storage.saveCart(cart);
+                          if (item.quantity > 1) {
+                            setState(() => item.quantity--);
+                          } else {
+                            setState(() => cart.removeAt(index));
+                          }
+                          await _updateCart();
+                        },
+                      ),
+                      Text('${item.quantity}'),
+                      IconButton(
+                        icon: const Icon(Icons.add),
+                        onPressed: () async {
+                          setState(() => item.quantity++);
+                          await _updateCart();
                         },
                       ),
                       IconButton(
                         icon: const Icon(Icons.delete),
                         onPressed: () async {
                           setState(() => cart.removeAt(index));
-                          await Storage.saveCart(cart);
+                          await _updateCart();
                         },
                       ),
                     ],
@@ -93,6 +104,7 @@ class _CartScreenState extends State<CartScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text('Total: \$${totalPrice.toStringAsFixed(2)}'),
+                  const SizedBox(height: 8),
                   ElevatedButton(
                     onPressed: () async {
                       final orders = await Storage.getOrders();
