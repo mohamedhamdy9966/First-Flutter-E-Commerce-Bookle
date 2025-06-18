@@ -10,7 +10,7 @@ class CategoryProductsScreen extends StatelessWidget {
       name: 'Pi',
       category: 'Fiction',
       image: 'assets/images/pi.jpg',
-      description: 'Pi',
+      description: 'lorem loremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 29.99,
     ),
     Product(
@@ -18,7 +18,7 @@ class CategoryProductsScreen extends StatelessWidget {
       name: 'Kit-Runner',
       category: 'Romance',
       image: 'assets/images/kit-runner.jpg',
-      description: 'Kit-Runner',
+      description: 'Kit-Runner loremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 59.99,
     ),
     Product(
@@ -26,7 +26,7 @@ class CategoryProductsScreen extends StatelessWidget {
       name: 'Help',
       category: 'Philosophy',
       image: 'assets/images/help.jpg',
-      description: 'Help',
+      description: 'Help loremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 99.99,
     ),
     Product(
@@ -34,7 +34,7 @@ class CategoryProductsScreen extends StatelessWidget {
       name: '1984',
       category: 'Politics',
       image: 'assets/images/1984.jpg',
-      description: '1984',
+      description: '1984 loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 79.99,
     ),
     Product(
@@ -42,7 +42,7 @@ class CategoryProductsScreen extends StatelessWidget {
       name: 'Animal Farm',
       category: 'Politics',
       image: 'assets/images/animal-farm.jpg',
-      description: 'Animal Farm',
+      description: 'Animal Farm loremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 39.99,
     ),
     Product(
@@ -50,7 +50,7 @@ class CategoryProductsScreen extends StatelessWidget {
       name: 'Divergent',
       category: 'Fiction',
       image: 'assets/images/divergent.jpg',
-      description: 'Divergent',
+      description: 'Divergent loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 499.99,
     ),
   ];

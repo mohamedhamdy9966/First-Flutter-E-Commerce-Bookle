@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       name: 'Pi',
       category: 'Fiction',
       image: 'assets/images/pi.jpg',
-      description: 'Pi',
+      description: 'Pi loremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 29.99,
     ),
     Product(
@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       name: 'Kit-Runner',
       category: 'Romance',
       image: 'assets/images/kit-runner.jpg',
-      description: 'Kit-Runner',
+      description: 'Kit-Runner loremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 59.99,
     ),
     Product(
@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
       name: 'Help',
       category: 'Philosophy',
       image: 'assets/images/help.jpg',
-      description: 'Help',
+      description: 'Help loremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 99.99,
     ),
     Product(
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
       name: '1984',
       category: 'Politics',
       image: 'assets/images/1984.jpg',
-      description: '1984',
+      description: '1984 loremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 79.99,
     ),
     Product(
@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
       name: 'Animal Farm',
       category: 'Politics',
       image: 'assets/images/animal-farm.jpg',
-      description: 'Animal Farm',
+      description: 'Animal Farm loremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 39.99,
     ),
     Product(
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
       name: 'Divergent',
       category: 'Fiction',
       image: 'assets/images/divergent.jpg',
-      description: 'Divergent',
+      description: 'Divergent loremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 499.99,
     ),
     Product(
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
       name: 'Dream Big',
       category: 'Philosophy',
       image: 'assets/images/dream.jpg',
-      description: 'Dream Big',
+      description: 'Dream Big loremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 4.99,
     ),
     Product(
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
       name: '15-minutes',
       category: 'Philosophy',
       image: 'assets/images/15-minutes.jpg',
-      description: '15-minutes',
+      description: '15-minutes loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 29.99,
     ),
     Product(
@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
       name: 'simple self care',
       category: 'Philosophy',
       image: 'assets/images/simple.jpg',
-      description: 'simple-self-care',
+      description: 'simple-self-care loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 29.99,
     ),
     Product(
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
       name: 'Me,Myself and us',
       category: 'Romance',
       image: 'assets/images/me.jpg',
-      description: 'Me,Myself and us',
+      description: 'Me,Myself and us loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
       price: 29.99,
     ),
   ];
