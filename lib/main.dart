@@ -36,6 +36,7 @@ class ECommerceApp extends StatelessWidget {
         '/category': (context) => const CategoryProductsScreen(),
         '/product': (context) => const ProductDetailsScreen(),
         '/cart': (context) => CartScreen(),
+        '/wishlist': (context) => const WishlistScreen(),
         '/orders': (context) => OrdersScreen(),
         '/profile': (context) => const ProfileScreen(),
       },

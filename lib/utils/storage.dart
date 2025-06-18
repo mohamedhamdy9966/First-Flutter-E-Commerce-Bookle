@@ -8,6 +8,7 @@ class Storage {
   static Future<SharedPreferences> _getPrefs() async =>
       await SharedPreferences.getInstance();
 
+  // USER
   static Future<void> saveUser(User user) async {
     final prefs = await _getPrefs();
     await prefs.setString('user', jsonEncode(user.toJson()));
@@ -24,6 +25,7 @@ class Storage {
     await prefs.remove('user');
   }
 
+  // CART
   static Future<void> saveCart(List<CartItem> cart) async {
     final prefs = await _getPrefs();
     await prefs.setString(
@@ -42,6 +44,7 @@ class Storage {
         : [];
   }
 
+  // ORDERS
   static Future<void> saveOrders(List<Order> orders) async {
     final prefs = await _getPrefs();
     await prefs.setString(
@@ -56,6 +59,25 @@ class Storage {
     return ordersJson != null
         ? (jsonDecode(ordersJson) as List)
               .map((i) => Order.fromJson(i))
+              .toList()
+        : [];
+  }
+
+  // WISHLIST
+  static Future<void> saveWishlist(List<CartItem> wishlist) async {
+    final prefs = await _getPrefs();
+    await prefs.setString(
+      'wishlist',
+      jsonEncode(wishlist.map((item) => item.toJson()).toList()),
+    );
+  }
+
+  static Future<List<CartItem>> getWishlist() async {
+    final prefs = await _getPrefs();
+    final wishlistJson = prefs.getString('wishlist');
+    return wishlistJson != null
+        ? (jsonDecode(wishlistJson) as List)
+              .map((i) => CartItem.fromJson(i))
               .toList()
         : [];
   }

@@ -58,25 +58,59 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             ),
             const SizedBox(height: 16),
             Center(
-              child: ElevatedButton(
-                onPressed: () async {
-                  final cart = await Storage.getCart();
-                  final existingItem = cart.firstWhere(
-                    (item) => item.product.id == product.id,
-                    orElse: () => CartItem(product: product, quantity: 0),
-                  );
-                  if (existingItem.quantity > 0) {
-                    existingItem.quantity += quantity;
-                  } else {
-                    cart.add(CartItem(product: product, quantity: quantity));
-                  }
-                  await Storage.saveCart(cart);
-                  if (!context.mounted) return;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Added to cart')),
-                  );
-                },
-                child: const Text('Add to Cart'),
+              child: Center(
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async {
+                        final cart = await Storage.getCart();
+                        final existingItem = cart.firstWhere(
+                          (item) => item.product.id == product.id,
+                          orElse: () => CartItem(product: product, quantity: 0),
+                        );
+                        if (existingItem.quantity > 0) {
+                          existingItem.quantity += quantity;
+                        } else {
+                          cart.add(
+                            CartItem(product: product, quantity: quantity),
+                          );
+                        }
+                        await Storage.saveCart(cart);
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Added to cart')),
+                        );
+                      },
+                      child: const Text('Add to Cart'),
+                    ),
+                    const SizedBox(height: 10),
+                    OutlinedButton.icon(
+                      onPressed: () async {
+                        final wishlist = await Storage.getWishlist();
+                        final alreadyExists = wishlist.any(
+                          (item) => item.product.id == product.id,
+                        );
+                        if (!alreadyExists) {
+                          wishlist.add(CartItem(product: product, quantity: 1));
+                          await Storage.saveWishlist(wishlist);
+                          if (!context.mounted) return;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Added to wishlist')),
+                          );
+                        } else {
+                          if (!context.mounted) return;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Already in wishlist'),
+                            ),
+                          );
+                        }
+                      },
+                      icon: const Icon(Icons.favorite_border),
+                      label: const Text('Add to Wishlist'),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
