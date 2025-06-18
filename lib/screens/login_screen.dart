@@ -93,6 +93,25 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: const Text('Don\'t have an account? Register'),
               ),
+              const SizedBox(height: 40),
+              Column(
+                children: [
+                  Icon(
+                    Icons.menu_book_rounded,
+                    size: 80,
+                    color: Colors.deepPurple,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Ghali BookStore',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.deepPurple,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

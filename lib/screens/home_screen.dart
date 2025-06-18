@@ -98,7 +98,12 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
-  static const List<String> categories = ['Fiction', 'Romance', 'Philosophy', 'Politics'];
+  static const List<String> categories = [
+    'Fiction',
+    'Romance',
+    'Philosophy',
+    'Politics',
+  ];
 
   @override
   void dispose() {
@@ -145,6 +150,13 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () async {
                 if (!context.mounted) return;
                 await Navigator.pushNamed(context, '/cart');
+              },
+            ),
+            ListTile(
+              title: const Text('Wishlist'),
+              onTap: () async {
+                if (!context.mounted) return;
+                await Navigator.pushNamed(context, '/wishlist');
               },
             ),
             ListTile(

@@ -6,6 +6,7 @@ import 'screens/home_screen.dart';
 import 'screens/category_products_screen.dart';
 import 'screens/product_details_screen.dart';
 import 'screens/cart_screen.dart';
+import 'screens/wishlist_screen.dart';
 import 'screens/orders_screen.dart';
 import 'screens/profile_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,7 +25,8 @@ class ECommerceApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ghali BookStore',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
+        scaffoldBackgroundColor: Color(0xFFF3E5F5), // Light purple
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: '/splash',
