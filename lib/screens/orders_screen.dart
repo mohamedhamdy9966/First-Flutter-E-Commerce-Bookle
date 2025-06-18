@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/order.dart';
 import '../utils/storage.dart';
+import 'order_details_screen.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({super.key});
@@ -37,7 +38,12 @@ class _OrdersScreenState extends State<OrdersScreen> {
               subtitle: Text('Total: \$${order.totalPrice.toStringAsFixed(2)}'),
               trailing: Text('${order.items.length} items'),
               onTap: () {
-                // Optionally show order details
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => OrderDetailsScreen(order: order),
+                  ),
+                );
               },
             ),
           );

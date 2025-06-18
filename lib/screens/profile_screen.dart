@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/user.dart';
 import '../utils/storage.dart';
+import 'dart:io';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -24,8 +25,11 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage(user?.image ?? 'assets/user.jpg'),
                   radius: 40,
+                  backgroundImage:
+                      user != null && user.image.startsWith('assets/')
+                      ? AssetImage(user.image) as ImageProvider
+                      : FileImage(File(user?.image ?? '')),
                 ),
                 const SizedBox(height: 16),
                 Text('Name: ${user?.fullName ?? ''}'),
